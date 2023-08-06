@@ -4,4 +4,23 @@
 
 body {
   margin: 0;
+  background-color: #fffefa;
+  font-family: "Amethysta", serif;
+}
+
+.zoom-in-effect {
+  transition: transform 1.5s ease;
+}
+
+.zoom-in-effect:hover {
+  transform: scale(1.1);
+}
+
+.read-all-container {
+  display: flex;
+  align-items: center;
+}
+
+.read-all-container p {
+  margin-right: 8px;
 }
