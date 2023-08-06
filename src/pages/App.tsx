@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
 import { fetchNews } from "../utils/api";
+import Layout from "../components/Layout";
+import { Card, CardNoPict } from "../components/Card";
+import HorizontalRule from "../components/HorizontalRule";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   useEffect(() => {
     fetchNews().then((res) => {
       console.log(res);
@@ -13,28 +13,44 @@ function App() {
   }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Layout>
+      <p className="text-5xl font-semibold my-12 tracking-wide">Latest</p>
+      <div className="grid grid-cols-10 gap-16">
+        <div className="col-span-4">
+          <Card />
+        </div>
+        <div className="col-span-2">
+          <Card />
+          <Card />
+        </div>
+        <div className="col-span-2">
+          <Card />
+        </div>
+        <div className="col-span-2">
+          <hr
+            style={{
+              background: "gray",
+              color: "gray",
+              borderColor: "gray",
+              height: "2px",
+            }}
+          />
+          <CardNoPict />
+          <HorizontalRule />
+          <CardNoPict />
+          <HorizontalRule />
+          <CardNoPict />
+          <div className="read-all-container my-16">
+            <p className="text-lg text-red-700 font-bold tracking-wider hover:text-red-800">
+              READ ALL
+            </p>
+            <div className="text-red-700 hover:text-red-800">
+              <FaArrowRightLong size={25} />
+            </div>
+          </div>
+        </div>
       </div>
-      <h1 className="underline text-7xl">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </Layout>
   );
 }
 
