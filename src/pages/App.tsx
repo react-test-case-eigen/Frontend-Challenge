@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { fetchNews } from "../utils/api";
 import Layout from "../components/Layout";
 import { Card, CardNoPict } from "../components/Card";
-import HorizontalRule from "../components/HorizontalRule";
+import { HorizontalRule } from "../components/HorizontalRule";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function App() {
   useEffect(() => {
@@ -40,14 +41,16 @@ function App() {
           <CardNoPict />
           <HorizontalRule />
           <CardNoPict />
-          <div className="read-all-container my-16">
-            <p className="text-lg text-red-700 font-bold tracking-wider hover:text-red-800">
-              READ ALL
-            </p>
-            <div className="text-red-700 hover:text-red-800">
-              <FaArrowRightLong size={25} />
+          <Link to={"/latest"}>
+            <div className="read-all-container my-16">
+              <p className="text-lg text-red-700 font-bold tracking-wider hover:text-red-800">
+                READ ALL
+              </p>
+              <div className="text-red-700 hover:text-red-800">
+                <FaArrowRightLong size={25} />
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </Layout>

@@ -1,6 +1,6 @@
-import React from "react";
+import { FC } from "react";
 
-const HorizontalRule = () => {
+export const HorizontalRule: FC = () => {
   return (
     <>
       <hr
@@ -16,4 +16,17 @@ const HorizontalRule = () => {
   );
 };
 
-export default HorizontalRule;
+export const HorizontalRuleForPages: FC = () => {
+  return (
+    <>
+      <hr
+        style={{
+          background: "gray",
+          color: "gray",
+          borderColor: "gray",
+          height: "2px",
+        }}
+      />
+    </>
+  );
+};

@@ -24,7 +24,7 @@ export const Card: FC = () => {
   );
 };
 
-export const CardNoPict = () => {
+export const CardNoPict: FC = () => {
   return (
     <div className="text-lg">
       <p className="mb-3 mt-8">4 August 2023</p>
