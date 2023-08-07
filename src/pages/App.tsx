@@ -5,27 +5,65 @@ import { Card, CardNoPict } from "../components/Card";
 import { HorizontalRule } from "../components/HorizontalRule";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { NewsType } from "../utils/types";
 
 function App() {
+  const [newsDatas, setNewsDatas] = useState<NewsType[]>([]);
   useEffect(() => {
-    fetchNews().then((res) => {
-      console.log(res);
+    fetchNews().then((articles) => {
+      setNewsDatas(articles);
+      console.log(articles);
     });
   }, []);
+
+  const firstNews = newsDatas.length > 0 ? newsDatas[0] : null;
+  const secondNews = newsDatas.slice(1, 3);
+  const thirdNews = newsDatas.slice(3, 5);
 
   return (
     <Layout>
       <p className="text-5xl font-semibold my-12 tracking-wide">Latest</p>
       <div className="grid grid-cols-10 gap-16">
-        <div className="col-span-4">
-          <Card />
+        {firstNews && (
+          <div className="col-span-4">
+            <Card
+              url={firstNews.url}
+              urlToImage={firstNews.urlToImage}
+              source={firstNews.source}
+              title={firstNews.title}
+              description={firstNews.description}
+              author={firstNews.author}
+              publishedAt={firstNews.publishedAt}
+            />
+          </div>
+        )}
+        <div className="col-span-2">
+          {secondNews.map((newsData, index) => (
+            <Card
+              key={index}
+              url={newsData.url}
+              urlToImage={newsData.urlToImage}
+              source={newsData.source}
+              title={newsData.title}
+              description={newsData.description}
+              author={newsData.author}
+              publishedAt={newsData.publishedAt}
+            />
+          ))}
         </div>
         <div className="col-span-2">
-          <Card />
-          <Card />
-        </div>
-        <div className="col-span-2">
-          <Card />
+          {thirdNews.map((newsData, index) => (
+            <Card
+              key={index}
+              url={newsData.url}
+              urlToImage={newsData.urlToImage}
+              source={newsData.source}
+              title={newsData.title}
+              description={newsData.description}
+              author={newsData.author}
+              publishedAt={newsData.publishedAt}
+            />
+          ))}
         </div>
         <div className="col-span-2">
           <hr
@@ -36,11 +74,32 @@ function App() {
               height: "2px",
             }}
           />
-          <CardNoPict />
+          {newsDatas.length >= 6 && (
+            <div className="col-span-2">
+              <CardNoPict
+                publishedAt={newsDatas[5].publishedAt}
+                title={newsDatas[5].title}
+              />
+            </div>
+          )}
           <HorizontalRule />
-          <CardNoPict />
+          {newsDatas.length >= 7 && (
+            <div className="col-span-2">
+              <CardNoPict
+                publishedAt={newsDatas[6].publishedAt}
+                title={newsDatas[6].title}
+              />
+            </div>
+          )}
           <HorizontalRule />
-          <CardNoPict />
+          {newsDatas.length >= 8 && (
+            <div className="col-span-2">
+              <CardNoPict
+                publishedAt={newsDatas[7].publishedAt}
+                title={newsDatas[7].title}
+              />
+            </div>
+          )}
           <Link to={"/latest"}>
             <div className="read-all-container my-16">
               <p className="text-lg text-red-700 font-bold tracking-wider hover:text-red-800">
