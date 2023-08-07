@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     fetchNews().then((articles) => {
       setNewsDatas(articles);
-      console.log(articles);
     });
   }, []);
 
@@ -22,7 +21,7 @@ function App() {
 
   return (
     <Layout>
-      <p className="text-5xl font-semibold my-12 tracking-wide">Latest</p>
+      <p className="text-5xl font-semibold my-12 tracking-wide">All News</p>
       <div className="grid grid-cols-10 gap-16">
         {firstNews && (
           <div className="col-span-4">
