@@ -7,10 +7,10 @@ export async function fetchNews() {
         import.meta.env.VITE_API_KEY
       }`
     );
-    const { data } = res;
-    return data;
+    const { articles } = res.data;
+    return articles;
   } catch (err: any) {
     alert(err.toString());
-    return { data: 0 };
+    return { articles: 0 };
   }
 }
