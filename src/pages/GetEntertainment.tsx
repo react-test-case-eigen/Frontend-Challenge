@@ -10,11 +10,7 @@ const GetEntertainmnet: FC = () => {
   useEffect(() => {
     axios
       .get(
-        `${
-          import.meta.env.VITE_BASE_URL
-        }top-headlines?country=us&category=entertainment&apiKey=${
-          import.meta.env.VITE_API_KEY
-        }`
+        `https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=9d9eedd661544b8da8bce1e167383b3c`
       )
       .then((res) => {
         const { articles } = res.data;

@@ -3,9 +3,7 @@ import axios from "axios";
 export async function fetchNews() {
   try {
     const res = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}everything?q=keyword&apiKey=${
-        import.meta.env.VITE_API_KEY
-      }`
+      `https://newsapi.org/v2/everything?q=keyword&apiKey=9d9eedd661544b8da8bce1e167383b3c`
     );
     const { articles } = res.data;
     return articles;
