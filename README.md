@@ -4,8 +4,8 @@ Clone this project
 
 
 ```sh
-git clone https://github.com/education-hub/FE.git
-cd fe
+git clone https://github.com/react-test-case-eigen/Frontend-Challenge.git
+cd Frontend-Challenge
 ```
 
 #### ⌛ Install
