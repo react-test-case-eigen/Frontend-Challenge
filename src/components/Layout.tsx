@@ -9,11 +9,13 @@ interface Props {
 const Layout: FC<Props> = (props) => {
   const { children } = props;
   return (
-    <div className="mx-auto max-w-[90rem]">
-      <Navbar />
-      {children}
+    <>
+      <div className="mx-auto max-w-[90rem]">
+        <Navbar />
+        {children}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
